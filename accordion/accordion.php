@@ -6,12 +6,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 <html>
 <head>
 <meta charset="utf-8">
-<title>Expand Blue - ........................... Feature </title>
-<link type="text/css" href="css/...............-style.css">
+<title>Expand Blue - Accordion Feature using ACF</title>
+<link type="text/css" href="css/accordion-style.css"> 
 </head>
 
 <body>
-<?php if(get_sub_field('select_addons_element') =='...................') : ?> 
+<?php if(get_sub_field('select_addons_element') =='Accordion') : ?> 
 <div class="fullwidth-blocks">
     
     <div class="project-description">        
@@ -28,11 +28,18 @@ if ( ! defined( 'ABSPATH' ) ) {
         </h2>
         <?php endif; endif; ?>      
     
-        <?php if ( have_rows( '.............' ) ):
-        while ( have_rows( '...............' ) ): the_row();  ?>
+        <?php if ( have_rows( 'accordion_contents' ) ):
+        while ( have_rows( 'accordion_contents' ) ): the_row();  ?>
 
-        <div class="....................... "> 
-            
+        <div class="accordion" data-expander="my-class" style="overflow:hidden"> 
+            <div class="accordion__head" data-toggle>
+                <?php the_sub_field('accordion_header'); ?>
+            </div>
+            <div class="accordion__body" data-body>
+                <div>
+                    <?php the_sub_field('accordion_content'); ?>
+                </div>
+            </div>
         </div>    
         <?php endwhile; endif; ?>
     </div>
@@ -43,9 +50,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 * This current feature will not work without the appropriate jQuery function
 *--------
 */ ?>
-<?php include 'css/..........-style.php';?>
+<?php include 'css/accordion-style.php';?>
 <?php endif; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="js/..............js"></script>
+<script src="js/accordion.js"></script>
 </body>
 </html>
